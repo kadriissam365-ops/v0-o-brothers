@@ -1,0 +1,45 @@
+```tsx file="app/menu-livre/page.tsx"
+"use client"
+import HTMLFlipBook from "react-pageflip"
+import Image from "next/image"
+
+const menuImages = [
+  "/menu-livre/page-1.png",
+  "/menu-livre/page-2.png",
+  "/menu-livre/page-4.png", // J'ai mis la page 4 avant la 3 pour un ordre plus logique (plats puis boissons)
+  "/menu-livre/page-3.png",
+]
+
+export default function MenuLivrePage() {
+  return (
+    <div className="min-h-screen bg-cream flex flex-col items-center justify-center py-12 px-4">
+      <h1 className="text-3xl md:text-4xl font-playfair font-bold text-navy mb-8 text-center">Notre Menu Interactif</h1>
+      <div className="w-full max-w-md md:max-w-4xl flex justify-center">
+        <HTMLFlipBook
+          width={500}
+          height={700}
+          size="stretch"
+          minWidth={315}
+          maxWidth={1000}
+          minHeight={400}
+          maxHeight={1533}
+          maxShadowOpacity={0.5}
+          showCover={true}
+          mobileScrollSupport={true}
+          className="shadow-lg"
+        >
+          {menuImages.map((src, index) => (
+            <div className="bg-white" key={index}>
+              <div className="relative w-full h-full">
+                <Image src={src || "/placeholder.svg"} alt={`Menu page ${index + 1}`} layout="fill" objectFit="contain" />
+              </div>
+            </div>
+          ))}
+        </HTMLFlipBook>
+      </div>
+      <p className="text-navy mt-8 text-lg text-center">
+        Cliquez sur les coins pour tourner les pages, ou glissez sur mobile.
+      </p>
+    </div>
+  )
+}
