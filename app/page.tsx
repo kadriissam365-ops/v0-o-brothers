@@ -65,7 +65,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/terrasse1.png"
+            src="/terrasse1.webp"
             alt="Brother's restaurant Gennevilliers - Terrasse"
             fill
             priority
