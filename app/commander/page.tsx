@@ -20,35 +20,35 @@ const menuData = {
       name: "César salade",
       description: "Salade, filet de poulet, œuf, tomates cerises, croûtons, copeaux de parmesan",
       price: 16.9,
-      image: "caesar salad with grilled chicken and parmesan",
+      image: "/gourmet-caesar-salad.png",
     },
     {
       id: "salade-chevre",
       name: "Chèvre chaud",
       description: "Salade, chèvre sur toasts, œuf, jambon de parme*",
       price: 16.9,
-      image: "warm goat cheese salad with ham and egg",
+      image: "/placeholder.svg",
     },
     {
       id: "salade-brothers",
       name: "Brother's salade",
       description: "Salade, saumon fumé, œuf, avocats, tomates, parmesan",
       price: 18.9,
-      image: "fresh salad with smoked salmon and avocado",
+      image: "/placeholder.svg",
     },
     {
       id: "bowl-saumon",
       name: "Bowl saumon",
       description: "Salade, riz, avocat, choux rouge, saumon mariné, tomates cerises, carottes, fèves",
       price: 18.9,
-      image: "salmon poke bowl with rice and vegetables",
+      image: "/images/gallery/plats/bowl-saumon.png",
     },
     {
       id: "bowl-poulet",
       name: "Bowl poulet",
       description: "Salade, riz, avocat, choux rouge, poulet mariné, tomates cerises, carottes, fèves",
       price: 18.9,
-      image: "chicken poke bowl with rice and vegetables",
+      image: "/placeholder.svg",
     },
   ],
   plats: [
@@ -115,70 +115,70 @@ const menuData = {
       name: "Margarita",
       description: "Sauce tomate, mozzarella",
       price: 13.9,
-      image: "classic margherita pizza with tomato sauce and mozzarella",
+      image: "/images/gallery/pizzas/margarita.png",
     },
     {
       id: "pizza-regina",
       name: "Régina",
       description: "Sauce tomate, mozzarella, champignons, jambon blanc*",
       price: 14.9,
-      image: "regina pizza with ham and mushrooms",
+      image: "/images/gallery/pizzas/regina.png",
     },
     {
       id: "pizza-4-fromages",
       name: "4 Fromages",
       description: "Sauce tomate, mozzarella, chèvre, parmesan, camembert",
       price: 14.9,
-      image: "four cheese pizza with different types of cheese",
+      image: "/images/gallery/pizzas/4-fromages.png",
     },
     {
       id: "pizza-vegetarienne",
       name: "Végétarienne",
       description: "Sauce tomate, mozzarella, oignons, poivrons, champignons, tomates fraîches",
       price: 14.9,
-      image: "vegetarian pizza with fresh vegetables",
+      image: "/placeholder.svg",
     },
     {
       id: "pizza-calzone",
       name: "Calzone",
       description: "Sauce tomate, mozzarella, jambon blanc*, oeuf",
       price: 14.9,
-      image: "folded calzone pizza with ham and egg",
+      image: "/placeholder.svg",
     },
     {
       id: "pizza-orientale",
       name: "Orientale",
       description: "Sauce tomate, mozzarella, oignons, poivrons, merguez, œuf",
       price: 15.9,
-      image: "oriental pizza with merguez sausage",
+      image: "/placeholder.svg",
     },
     {
       id: "pizza-norvegienne",
       name: "Norvégienne",
       description: "Crème fraîche, mozzarella, saumon fumé",
       price: 16.9,
-      image: "norwegian pizza with smoked salmon and cream",
+      image: "/images/gallery/pizzas/norvegienne.png",
     },
     {
       id: "pizza-raclette",
       name: "Raclette",
       description: "Crème fraîche, mozzarella, pomme de terre, jambon*, fromage raclette",
       price: 15.9,
-      image: "raclette cheese pizza with potatoes and ham",
+      image: "/placeholder.svg",
     },
     {
       id: "pizza-fermiere",
       name: "Fermière",
       description: "Crème fraîche, mozzarella, champignons, poulet",
       price: 14.9,
-      image: "farm-style pizza with chicken and mushrooms",
+      image: "/placeholder.svg",
     },
     {
       id: "pizza-chevre-miel",
       name: "Chèvre miel",
       description: "Sauce tomate, mozzarella, chèvre, miel",
       price: 14.9,
-      image: "goat cheese and honey pizza",
+      image: "/placeholder.svg",
     },
   ],
   desserts: [
@@ -187,49 +187,49 @@ const menuData = {
       name: "Dessert du jour",
       description: "Voir tableau",
       price: 7.9,
-      image: "dessert of the day",
+      image: "/french-chocolate-vanilla-dessert.png",
     },
     {
       id: "tiramisu",
       name: "Tiramisu",
       description: "Maison du moment",
       price: 7.9,
-      image: "homemade tiramisu dessert",
+      image: "/images/gallery/desserts/tiramisu.png",
     },
     {
       id: "creme-brulee",
       name: "Crème brûlée",
       description: "",
       price: 7.9,
-      image: "classic creme brulee with caramelized top",
+      image: "/images/gallery/desserts/creme-brulee.png",
     },
     {
       id: "pain-perdu",
       name: "Brioche façon pain perdu",
       description: "Avec sa boule de glace vanille",
       price: 7.9,
-      image: "french toast brioche with vanilla ice cream",
+      image: "/placeholder.svg",
     },
     {
       id: "moelleux",
       name: "Mœlleux au chocolat",
       description: "Avec sa boule de glace vanille",
       price: 7.9,
-      image: "chocolate lava cake with vanilla ice cream",
+      image: "/images/gallery/desserts/moelleux-chocolat.png",
     },
     {
       id: "cafe-gourmand",
       name: "Café gourmand",
       description: "Accompagné de ses mignardises du moment",
       price: 9.9,
-      image: "coffee with small assorted desserts",
+      image: "/images/gallery/desserts/cafe-gourmand.png",
     },
     {
       id: "the-gourmand",
       name: "Thé gourmand",
       description: "Accompagné de ses mignardises du moment",
       price: 11.9,
-      image: "tea with small assorted desserts",
+      image: "/placeholder.svg",
     },
   ],
   boissons_fraiches: [
@@ -441,23 +441,39 @@ export default function OrderPage() {
   const handleCheckout = (e: React.FormEvent) => {
     e.preventDefault()
 
-    // Simulate API call
-    setTimeout(() => {
-      toast({
-        title: "Commande confirmée !",
-        description: `Votre commande a été enregistrée et sera prête à ${customerInfo.pickupTime}.`,
-      })
+    const itemsList = cart
+      .map((item) => `- ${item.name} x${item.quantity} = ${(item.price * item.quantity).toFixed(2)} €`)
+      .join("\n")
 
-      setCart([])
-      setIsCheckoutOpen(false)
-      setCustomerInfo({
-        name: "",
-        phone: "",
-        email: "",
-        pickupTime: "",
-        notes: "",
-      })
-    }, 1500)
+    const body = `NOUVELLE COMMANDE À EMPORTER\n\n` +
+      `Client : ${customerInfo.name}\n` +
+      `Téléphone : ${customerInfo.phone}\n` +
+      `Email : ${customerInfo.email}\n` +
+      `Heure de retrait : ${customerInfo.pickupTime}\n` +
+      `Notes : ${customerInfo.notes || "Aucune"}\n\n` +
+      `ARTICLES :\n${itemsList}\n\n` +
+      `TOTAL : ${getTotalPrice().toFixed(2)} €`
+
+    const mailtoUrl = `mailto:contact@brothers-restaurant-gennevilliers.com?subject=${encodeURIComponent(
+      `Commande à emporter — ${customerInfo.name}`
+    )}&body=${encodeURIComponent(body)}`
+
+    window.location.href = mailtoUrl
+
+    toast({
+      title: "Commande envoyée !",
+      description: `Votre client mail s'est ouvert. Envoyez l'email pour confirmer votre commande.`,
+    })
+
+    setCart([])
+    setIsCheckoutOpen(false)
+    setCustomerInfo({
+      name: "",
+      phone: "",
+      email: "",
+      pickupTime: "",
+      notes: "",
+    })
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -501,8 +517,9 @@ export default function OrderPage() {
               <Button
                 onClick={() => setIsCartOpen(true)}
                 className="bg-navy hover:bg-navy-light rounded-full h-16 w-16 p-0 shadow-lg"
+                aria-label={`Voir le panier (${getTotalItems()} article${getTotalItems() > 1 ? "s" : ""})`}
               >
-                <ShoppingCart className="h-6 w-6" />
+                <ShoppingCart className="h-6 w-6" aria-hidden="true" />
                 {getTotalItems() > 0 && (
                   <Badge className="absolute -top-2 -right-2 bg-white text-navy">{getTotalItems()}</Badge>
                 )}
@@ -533,7 +550,7 @@ export default function OrderPage() {
                         <div className="grid grid-cols-1 md:grid-cols-3 h-full">
                           <div className="relative h-48 md:h-full">
                             <Image
-                              src={`/abstract-geometric-shapes.png?height=300&width=300&query=${item.image}`}
+                              src={item.image || "/placeholder.svg"}
                               alt={item.name}
                               fill
                               className="object-cover"
@@ -615,7 +632,7 @@ export default function OrderPage() {
                         <div className="grid grid-cols-1 md:grid-cols-3 h-full">
                           <div className="relative h-48 md:h-full">
                             <Image
-                              src={`/abstract-geometric-shapes.png?height=300&width=300&query=${item.image}`}
+                              src={item.image || "/placeholder.svg"}
                               alt={item.name}
                               fill
                               className="object-cover"
@@ -656,7 +673,7 @@ export default function OrderPage() {
                         <div className="grid grid-cols-1 md:grid-cols-3 h-full">
                           <div className="relative h-48 md:h-full">
                             <Image
-                              src={`/abstract-geometric-shapes.png?height=300&width=300&query=${item.image}`}
+                              src={item.image || "/placeholder.svg"}
                               alt={item.name}
                               fill
                               className="object-cover"
@@ -697,7 +714,7 @@ export default function OrderPage() {
                         <div className="grid grid-cols-1 md:grid-cols-3 h-full">
                           <div className="relative h-48 md:h-full">
                             <Image
-                              src={`/abstract-geometric-shapes.png?height=300&width=300&query=${item.image}`}
+                              src={item.image || "/placeholder.svg"}
                               alt={item.name}
                               fill
                               className="object-cover"
@@ -740,7 +757,7 @@ export default function OrderPage() {
                         <div className="grid grid-cols-1 md:grid-cols-3 h-full">
                           <div className="relative h-48 md:h-full">
                             <Image
-                              src={`/abstract-geometric-shapes.png?height=300&width=300&query=${item.image}`}
+                              src={item.image || "/placeholder.svg"}
                               alt={item.name}
                               fill
                               className="object-cover"
@@ -781,7 +798,7 @@ export default function OrderPage() {
                         <div className="grid grid-cols-1 md:grid-cols-3 h-full">
                           <div className="relative h-48 md:h-full">
                             <Image
-                              src={`/abstract-geometric-shapes.png?height=300&width=300&query=${item.image}`}
+                              src={item.image || "/placeholder.svg"}
                               alt={item.name}
                               fill
                               className="object-cover"
@@ -826,7 +843,7 @@ export default function OrderPage() {
                         <div className="grid grid-cols-1 md:grid-cols-3 h-full">
                           <div className="relative h-48 md:h-full">
                             <Image
-                              src={`/abstract-geometric-shapes.png?height=300&width=300&query=${item.image}`}
+                              src={item.image || "/placeholder.svg"}
                               alt={item.name}
                               fill
                               className="object-cover"
@@ -885,21 +902,24 @@ export default function OrderPage() {
                                 <button
                                   onClick={() => updateQuantity(item.id, item.quantity - 1)}
                                   className="p-1 rounded-full bg-gray-100 hover:bg-gray-200"
+                                  aria-label={`Diminuer la quantité de ${item.name}`}
                                 >
-                                  <Minus className="h-4 w-4" />
+                                  <Minus className="h-4 w-4" aria-hidden="true" />
                                 </button>
-                                <span className="w-8 text-center">{item.quantity}</span>
+                                <span className="w-8 text-center" aria-live="polite" aria-label={`Quantité : ${item.quantity}`}>{item.quantity}</span>
                                 <button
                                   onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                   className="p-1 rounded-full bg-gray-100 hover:bg-gray-200"
+                                  aria-label={`Augmenter la quantité de ${item.name}`}
                                 >
-                                  <Plus className="h-4 w-4" />
+                                  <Plus className="h-4 w-4" aria-hidden="true" />
                                 </button>
                                 <button
                                   onClick={() => removeFromCart(item.id)}
                                   className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 ml-2"
+                                  aria-label={`Supprimer ${item.name} du panier`}
                                 >
-                                  <X className="h-4 w-4" />
+                                  <X className="h-4 w-4" aria-hidden="true" />
                                 </button>
                               </div>
                             </div>

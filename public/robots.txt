@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.brothers-restaurant-gennevilliers.com/sitemap.xml

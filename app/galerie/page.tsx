@@ -135,29 +135,33 @@ const renderGalleryTab = (
       <motion.div
         key={item.id}
         variants={fadeIn}
-        className="cursor-pointer"
-        onClick={() =>
-          setSelectedImage({
-            src: item.image,
-            title: item.title,
-            description: item.description,
-          })
-        }
       >
-        <div className="relative h-64 rounded-lg overflow-hidden group">
-          <Image
-            src={item.image || "/placeholder.svg"}
-            alt={item.title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-            <div className="p-4 w-full">
-              <h3 className="text-white font-bold">{item.title}</h3>
-              <p className="text-white/80 text-sm">{item.description}</p>
+        <button
+          className="cursor-pointer w-full text-left focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2 rounded-lg"
+          onClick={() =>
+            setSelectedImage({
+              src: item.image,
+              title: item.title,
+              description: item.description,
+            })
+          }
+          aria-label={`Agrandir : ${item.title} — ${item.description}`}
+        >
+          <div className="relative h-64 rounded-lg overflow-hidden group">
+            <Image
+              src={item.image || "/placeholder.svg"}
+              alt={item.title}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105 group-focus:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+              <div className="p-4 w-full">
+                <h3 className="text-white font-bold">{item.title}</h3>
+                <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300">{item.description}</p>
+              </div>
             </div>
           </div>
-        </div>
+        </button>
       </motion.div>
     ))}
   </motion.div>
@@ -234,8 +238,12 @@ export default function GalleryPage() {
             {/* Lightbox */}
             {selectedImage && (
               <div
+                role="dialog"
+                aria-modal="true"
+                aria-label={`Image agrandie : ${selectedImage.title}`}
                 className="fixed inset-0 bg-navy/90 z-50 flex items-center justify-center p-4"
                 onClick={() => setSelectedImage(null)}
+                onKeyDown={(e) => e.key === "Escape" && setSelectedImage(null)}
               >
                 <div
                   className="max-w-4xl w-full bg-white rounded-lg overflow-hidden"
@@ -254,13 +262,18 @@ export default function GalleryPage() {
                     <p className="text-gray-600">{selectedImage.description}</p>
                   </div>
                 </div>
-                <button className="absolute top-4 right-4 text-white" onClick={() => setSelectedImage(null)}>
+                <button
+                  className="absolute top-4 right-4 text-white hover:text-white/80 transition-colors"
+                  onClick={() => setSelectedImage(null)}
+                  aria-label="Fermer la vue agrandie"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-8 w-8"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    aria-hidden="true"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>

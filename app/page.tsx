@@ -37,26 +37,20 @@ export default function Home() {
   const card3D = {
     hidden: {
       opacity: 0,
-      y: 50,
-      rotateX: -15,
-      scale: 0.9,
+      y: 30,
+      scale: 0.95,
     },
     visible: {
       opacity: 1,
       y: 0,
-      rotateX: 0,
       scale: 1,
       transition: {
         type: "spring",
         stiffness: 100,
         damping: 15,
-        duration: 0.8,
+        duration: 0.6,
       },
     },
-  }
-
-  const handleBoissonsClick = () => {
-    window.open("https://drive.google.com/file/d/1cVqbAp2MzhnqKeTw75h4w1yShiar9ajE/view?usp=sharing", "_blank")
   }
 
   return (
@@ -70,7 +64,7 @@ export default function Home() {
             fill
             priority
             className="object-cover"
-            quality={100}
+            quality={85}
           />
           <div className="absolute inset-0 bg-navy/50" />
         </div>
@@ -90,11 +84,10 @@ export default function Home() {
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
                 <Button
                   size="lg"
-                  variant="outline"
-                  className="bg-transparent text-white border-white hover:bg-white/10"
+                  className="bg-white text-navy hover:bg-white/90 font-semibold"
                   asChild
                 >
-                  <Link href="/menu">Découvrir notre carte dynamique</Link>
+                  <Link href="/commander">Commander en ligne</Link>
                 </Button>
                 <Button
                   size="lg"
@@ -102,7 +95,15 @@ export default function Home() {
                   className="bg-transparent text-white border-white hover:bg-white/10"
                   asChild
                 >
-                  <Link href="/menu-restaurant-pdf">Menu statique</Link>
+                  <Link href="/menu">Découvrir notre carte</Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent text-white border-white hover:bg-white/10"
+                  asChild
+                >
+                  <Link href="/menu-restaurant-pdf">Menu PDF</Link>
                 </Button>
               </motion.div>
             </motion.div>
@@ -111,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* Info Cards Section */}
-      <section className="py-16 bg-cream" style={{ perspective: "1500px" }}>
+      <section className="py-16 bg-cream">
         <div className="container mx-auto px-4">
           {isLoaded && (
             <motion.div
@@ -124,13 +125,9 @@ export default function Home() {
               <motion.div
                 variants={card3D}
                 whileHover={{
-                  scale: 1.05,
-                  rotateY: 5,
-                  rotateX: 5,
-                  z: 50,
+                  scale: 1.03,
                   transition: { type: "spring", stiffness: 300, damping: 20 },
                 }}
-                style={{ transformStyle: "preserve-3d" }}
               >
                 <Card className="h-full shadow-lg hover:shadow-2xl transition-shadow duration-300">
                   <CardContent className="p-6 flex flex-col items-center text-center">
@@ -160,13 +157,9 @@ export default function Home() {
               <motion.div
                 variants={card3D}
                 whileHover={{
-                  scale: 1.05,
-                  rotateY: 5,
-                  rotateX: 5,
-                  z: 50,
+                  scale: 1.03,
                   transition: { type: "spring", stiffness: 300, damping: 20 },
                 }}
-                style={{ transformStyle: "preserve-3d" }}
               >
                 <Card className="h-full shadow-lg hover:shadow-2xl transition-shadow duration-300">
                   <CardContent className="p-6 flex flex-col items-center text-center">
@@ -198,13 +191,9 @@ export default function Home() {
               <motion.div
                 variants={card3D}
                 whileHover={{
-                  scale: 1.05,
-                  rotateY: 5,
-                  rotateX: 5,
-                  z: 50,
+                  scale: 1.03,
                   transition: { type: "spring", stiffness: 300, damping: 20 },
                 }}
-                style={{ transformStyle: "preserve-3d" }}
               >
                 <Card className="h-full shadow-lg hover:shadow-2xl transition-shadow duration-300">
                   <CardContent className="p-6 flex flex-col items-center text-center">

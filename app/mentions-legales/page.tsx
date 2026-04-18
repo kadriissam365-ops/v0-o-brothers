@@ -33,7 +33,7 @@ export default function MentionsLegales() {
                   <strong>Téléphone :</strong> 01 47 90 25 72
                 </p>
                 <p>
-                  <strong>Email :</strong> contact@brothers-gennevilliers.fr
+                  <strong>Email :</strong> contact@brothers-restaurant-gennevilliers.com
                 </p>
                 <p>
                   <strong>Numéro SIRET :</strong> [À compléter]
@@ -178,7 +178,7 @@ export default function MentionsLegales() {
                   <br />
                   92230 Gennevilliers
                   <br />
-                  Email : contact@brothers-gennevilliers.fr
+                  Email : contact@brothers-restaurant-gennevilliers.com
                 </p>
                 <p>
                   Pour plus d'informations sur le traitement de vos données personnelles, consultez notre{" "}
@@ -206,7 +206,7 @@ export default function MentionsLegales() {
                 <p>Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter :</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
                   <li>Par téléphone : 01 47 90 25 72</li>
-                  <li>Par email : contact@brothers-gennevilliers.fr</li>
+                  <li>Par email : contact@brothers-restaurant-gennevilliers.com</li>
                   <li>Par courrier : 148 avenue Gabriel Péri, 92230 Gennevilliers</li>
                 </ul>
               </div>

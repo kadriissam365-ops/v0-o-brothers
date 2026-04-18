@@ -55,7 +55,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Button asChild className="bg-navy hover:bg-navy-light p-3">
-            <Link href="tel:+33123456789" aria-label="Appeler le restaurant">
+            <Link href="tel:+33147902572" aria-label="Appeler le restaurant">
               <Phone className="h-5 w-5" />
             </Link>
           </Button>
@@ -102,7 +102,7 @@ export default function Navbar() {
                 ))}
                 <Button asChild className="bg-navy hover:bg-navy-light w-full">
                   <Link
-                    href="tel:+33123456789"
+                    href="tel:+33147902572"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center justify-center gap-2"
                   >
