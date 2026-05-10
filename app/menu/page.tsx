@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
-import { Clock, GlassWater, Coffee, Martini, Leaf, Snowflake, Wine, Maximize, X, Search } from "lucide-react"
+import { Clock, GlassWater, Coffee, Martini, Leaf, Snowflake, Wine, Maximize, X, Search, ChevronLeft, ChevronRight } from "lucide-react"
 
 // Menu item translations
 const menuItemTranslations = {
@@ -1367,6 +1367,33 @@ export default function MenuPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [searchMatches, setSearchMatches] = useState<Array<{ category: string; name: string; price: string }>>([])
   const tabsListRef = useRef<HTMLDivElement>(null)
+  const tabsScrollRef = useRef<HTMLDivElement>(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(false)
+
+  useEffect(() => {
+    const el = tabsScrollRef.current
+    if (!el) return
+    const update = () => {
+      const max = el.scrollWidth - el.clientWidth
+      setCanScrollLeft(el.scrollLeft > 4)
+      setCanScrollRight(el.scrollLeft < max - 4)
+    }
+    update()
+    el.addEventListener("scroll", update, { passive: true })
+    window.addEventListener("resize", update)
+    return () => {
+      el.removeEventListener("scroll", update)
+      window.removeEventListener("resize", update)
+    }
+  }, [language, isLoaded])
+
+  const scrollTabs = (direction: "left" | "right") => {
+    const el = tabsScrollRef.current
+    if (!el) return
+    const amount = el.clientWidth * 0.7
+    el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" })
+  }
 
   useEffect(() => {
     if (!searchQuery.trim()) {
@@ -1652,9 +1679,10 @@ export default function MenuPage() {
                     position: absolute;
                     top: 0;
                     bottom: 0;
-                    width: 24px;
+                    width: 32px;
                     pointer-events: none;
                     z-index: 2;
+                    transition: opacity 0.2s ease;
                   }
                   .tabs-fade::before {
                     left: 0;
@@ -1677,8 +1705,50 @@ export default function MenuPage() {
                   .scrollbar-hide::-webkit-scrollbar {
                     display: none;
                   }
+                  @keyframes tabs-arrow-bounce {
+                    0%, 100% { transform: translateY(-50%) translateX(0); }
+                    50% { transform: translateY(-50%) translateX(4px); }
+                  }
+                  @keyframes tabs-arrow-bounce-left {
+                    0%, 100% { transform: translateY(-50%) translateX(0); }
+                    50% { transform: translateY(-50%) translateX(-4px); }
+                  }
+                  .tabs-arrow-right {
+                    animation: tabs-arrow-bounce 1.6s ease-in-out infinite;
+                  }
+                  .tabs-arrow-left {
+                    animation: tabs-arrow-bounce-left 1.6s ease-in-out infinite;
+                  }
+                  @media (prefers-reduced-motion: reduce) {
+                    .tabs-arrow-right,
+                    .tabs-arrow-left {
+                      animation: none;
+                    }
+                  }
                 `}</style>
-                <div className="overflow-x-auto p-4 md:p-5 scrollbar-hide">
+                {/* Chevron Left */}
+                <button
+                  type="button"
+                  aria-label="Faire défiler les catégories vers la gauche"
+                  onClick={() => scrollTabs("left")}
+                  className={`md:hidden absolute left-1 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-lg ring-1 ring-gray-200 flex items-center justify-center text-navy transition-opacity ${
+                    canScrollLeft ? "opacity-100 tabs-arrow-left" : "opacity-0 pointer-events-none"
+                  }`}
+                >
+                  <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+                </button>
+                {/* Chevron Right */}
+                <button
+                  type="button"
+                  aria-label="Faire défiler les catégories vers la droite"
+                  onClick={() => scrollTabs("right")}
+                  className={`md:hidden absolute right-1 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-lg ring-1 ring-gray-200 flex items-center justify-center text-navy transition-opacity ${
+                    canScrollRight ? "opacity-100 tabs-arrow-right" : "opacity-0 pointer-events-none"
+                  }`}
+                >
+                  <ChevronRight className="h-5 w-5" aria-hidden="true" />
+                </button>
+                <div ref={tabsScrollRef} className="overflow-x-auto p-4 md:p-5 scrollbar-hide">
                   <TabsList className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-3 md:gap-x-4 md:gap-y-2 min-w-max md:min-w-0 h-auto bg-transparent">
                   <TabsTrigger
                     value="salades"
