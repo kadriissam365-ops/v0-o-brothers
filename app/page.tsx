@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Clock, MapPin, Phone, Instagram } from "lucide-react"
+import { RESTAURANT } from "@/lib/constants"
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -139,16 +140,16 @@ export default function Home() {
                     </motion.div>
                     <h3 className="text-xl font-playfair font-bold mb-2">Horaires</h3>
                     <p className="text-gray-600 mb-2">
-                      <span className="font-medium">Ouverture:</span>
+                      <span className="font-medium">Ouverture :</span>
                       <br />
-                      Lundi au Vendredi: 7h à 20h
+                      {RESTAURANT.hours.opening.weekdays}
                       <br />
-                      Samedi: 8h à 20h
+                      {RESTAURANT.hours.opening.saturday}
                     </p>
                     <p className="text-gray-600">
-                      <span className="font-medium">Service restauration:</span>
+                      <span className="font-medium">Service restauration :</span>
                       <br />
-                      Lundi au Samedi: 11h30 à 14h30
+                      {RESTAURANT.hours.service}
                     </p>
                   </CardContent>
                 </Card>
@@ -171,18 +172,16 @@ export default function Home() {
                     </motion.div>
                     <h3 className="text-xl font-playfair font-bold mb-2">Adresse</h3>
                     <p className="text-gray-600 mb-4">
-                      148 avenue Gabriel Péri
+                      {RESTAURANT.address.street}
                       <br />
-                      92230 Gennevilliers
+                      {RESTAURANT.address.city}
                     </p>
                     <p className="text-gray-600 text-sm">
-                      PARKING Centre-Ville
+                      {RESTAURANT.parking.label}
                       <br />
-                      2H GRATUITES*
+                      {RESTAURANT.parking.note}
                       <br />
-                      *Ticket disponible chez votre commerçant
-                      <br />
-                      Entrée du parking: 21 av. Claude Debussy
+                      {RESTAURANT.parking.entrance}
                     </p>
                   </CardContent>
                 </Card>
@@ -204,24 +203,32 @@ export default function Home() {
                       <Phone className="h-10 w-10 text-navy mb-4" />
                     </motion.div>
                     <h3 className="text-xl font-playfair font-bold mb-2">Contact</h3>
-                    <p className="text-gray-600 mb-4">Téléphone: 01 47 90 25 72</p>
+                    <p className="text-gray-600 mb-4">
+                      Téléphone :{" "}
+                      <a href={`tel:${RESTAURANT.phone.tel}`} className="hover:text-navy transition-colors">
+                        {RESTAURANT.phone.display}
+                      </a>
+                    </p>
                     <div className="flex flex-col items-center">
                       <p className="text-gray-600 mb-2">Suivez-nous sur Instagram</p>
                       <div className="flex space-x-4">
-                        <a
-                          href="https://www.instagram.com/brothersgenneviliers"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-navy hover:text-navy-light transition-colors"
-                          aria-label="Instagram"
-                        >
-                          <Instagram className="h-6 w-6" />
-                        </a>
+                        {RESTAURANT.instagram.map((ig) => (
+                          <a
+                            key={ig.handle}
+                            href={ig.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-navy hover:text-navy-light transition-colors"
+                            aria-label={`Instagram ${ig.handle}`}
+                          >
+                            <Instagram className="h-6 w-6" aria-hidden="true" />
+                          </a>
+                        ))}
                       </div>
                       <p className="text-gray-600 text-sm mt-2">
-                        @brothersgenneviliers
-                        <br />
-                        brothers92230
+                        {RESTAURANT.instagram.map((ig) => (
+                          <span key={ig.handle} className="block">{ig.handle}</span>
+                        ))}
                       </p>
                     </div>
                   </CardContent>
