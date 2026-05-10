@@ -50,7 +50,7 @@ export default function MenuBoissonsPDF() {
             <div className="flex justify-between items-start">
               <div className="flex-1 pr-4">
                 <span className="font-bold">Jus de fruits 25cl</span>
-                <span className="text-sm text-gray-600 print:text-xs block">
+                <span className="text-sm text-gray-700 print:text-xs block">
                   Ananas, orange, pomme, abricot, pamplemousse, tomate, ACE
                 </span>
               </div>

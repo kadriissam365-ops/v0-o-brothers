@@ -7,7 +7,7 @@ export default function NotFound() {
       <div className="text-center px-4">
         <h1 className="text-8xl font-playfair font-bold text-navy mb-4">404</h1>
         <h2 className="text-2xl font-playfair font-semibold text-gray-800 mb-4">Page introuvable</h2>
-        <p className="text-gray-600 max-w-md mx-auto mb-8">
+        <p className="text-gray-700 max-w-md mx-auto mb-8">
           Désolé, la page que vous cherchez n&apos;existe pas ou a été déplacée.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -22,6 +23,8 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+  const isActive = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,7 +70,11 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium hover:text-navy transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 rounded-md px-1"
+              aria-current={isActive(link.href) ? "page" : undefined}
+              className={cn(
+                "text-sm font-medium transition-colors rounded-md px-1",
+                isActive(link.href) ? "text-navy underline underline-offset-4" : "text-gray-700 hover:text-navy",
+              )}
             >
               {link.name}
             </Link>
@@ -122,7 +129,11 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-lg font-medium hover:text-navy transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 rounded-md"
+                    aria-current={isActive(link.href) ? "page" : undefined}
+                    className={cn(
+                      "text-lg font-medium transition-colors rounded-md",
+                      isActive(link.href) ? "text-navy underline underline-offset-4" : "text-gray-800 hover:text-navy",
+                    )}
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}

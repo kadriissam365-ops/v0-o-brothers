@@ -60,7 +60,7 @@ export default function ContactPage() {
         <motion.div initial="hidden" animate="visible" variants={fadeIn} className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4">Contact</h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-700 max-w-2xl mx-auto">
               Nous sommes à votre disposition pour répondre à toutes vos questions.
             </p>
           </div>
@@ -75,12 +75,12 @@ export default function ContactPage() {
                   <MapPin className="h-6 w-6 text-navy mr-4 mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="font-bold mb-1">Adresse</h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-700">
                       {RESTAURANT.address.street}
                       <br />
                       {RESTAURANT.address.city}
                     </p>
-                    <p className="text-gray-600 text-sm mt-2">
+                    <p className="text-gray-700 text-sm mt-2">
                       {RESTAURANT.parking.label}
                       <br />
                       {RESTAURANT.parking.note}
@@ -94,14 +94,14 @@ export default function ContactPage() {
                   <Clock className="h-6 w-6 text-navy mr-4 mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="font-bold mb-1">Horaires</h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-700">
                       <span className="font-medium">Ouverture :</span>
                       <br />
                       {RESTAURANT.hours.opening.weekdays}
                       <br />
                       {RESTAURANT.hours.opening.saturday}
                     </p>
-                    <p className="text-gray-600 mt-2">
+                    <p className="text-gray-700 mt-2">
                       <span className="font-medium">Service restauration :</span>
                       <br />
                       {RESTAURANT.hours.service}
@@ -115,7 +115,7 @@ export default function ContactPage() {
                     <h3 className="font-bold mb-1">Téléphone</h3>
                     <a
                       href={`tel:${RESTAURANT.phone.tel}`}
-                      className="text-gray-600 hover:text-navy transition-colors"
+                      className="text-gray-700 hover:text-navy transition-colors"
                     >
                       {RESTAURANT.phone.display}
                     </a>
@@ -132,7 +132,7 @@ export default function ContactPage() {
                         href={ig.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block text-gray-600 hover:text-navy transition-colors"
+                        className="block text-gray-700 hover:text-navy transition-colors"
                       >
                         {ig.handle}
                       </a>

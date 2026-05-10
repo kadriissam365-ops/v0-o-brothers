@@ -150,8 +150,9 @@ const renderGalleryTab = (
           <div className="relative h-64 rounded-lg overflow-hidden group">
             <Image
               src={item.image || "/placeholder.svg"}
-              alt={item.title}
+              alt={`${item.title} — ${item.description}`}
               fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover transition-transform duration-300 group-hover:scale-105 group-focus:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
@@ -179,6 +180,20 @@ export default function GalleryPage() {
     setIsLoaded(true)
   }, [])
 
+  useEffect(() => {
+    if (!selectedImage) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedImage(null)
+    }
+    const previous = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    window.addEventListener("keydown", onKey)
+    return () => {
+      document.body.style.overflow = previous
+      window.removeEventListener("keydown", onKey)
+    }
+  }, [selectedImage])
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -203,7 +218,7 @@ export default function GalleryPage() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4">Galerie</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-700 max-w-2xl mx-auto">
             Découvrez en images notre restaurant, nos plats, nos pizzas et nos desserts.
           </p>
         </div>
@@ -252,14 +267,15 @@ export default function GalleryPage() {
                   <div className="relative h-[60vh]">
                     <Image
                       src={selectedImage.src || "/placeholder.svg"}
-                      alt={selectedImage.title}
+                      alt={`${selectedImage.title} — ${selectedImage.description}`}
                       fill
+                      sizes="(max-width: 768px) 100vw, 1024px"
                       className="object-contain"
                     />
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-playfair font-bold mb-2">{selectedImage.title}</h3>
-                    <p className="text-gray-600">{selectedImage.description}</p>
+                    <p className="text-gray-700">{selectedImage.description}</p>
                   </div>
                 </div>
                 <button

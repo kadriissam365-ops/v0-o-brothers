@@ -14,7 +14,7 @@ export default function PolitiqueConfidentialite() {
           <h1 className="text-4xl font-playfair font-bold text-gray-900 mb-8">Politique de confidentialité</h1>
 
           <div className="prose prose-lg max-w-none">
-            <p className="text-gray-600 mb-8">Dernière mise à jour : {new Date().toLocaleDateString("fr-FR")}</p>
+            <p className="text-gray-700 mb-8">Dernière mise à jour : {new Date().toLocaleDateString("fr-FR")}</p>
 
             <section className="mb-8">
               <h2 className="text-2xl font-playfair font-semibold text-gray-900 mb-4">1. Introduction</h2>

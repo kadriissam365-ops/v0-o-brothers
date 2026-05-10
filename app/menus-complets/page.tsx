@@ -23,7 +23,7 @@ export default function MenusComplets() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4">Nos Menus</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-700 max-w-2xl mx-auto">
             Découvrez notre carte complète avec nos plats traditionnels, salades composées, pizzas maison, desserts et
             boissons.
           </p>

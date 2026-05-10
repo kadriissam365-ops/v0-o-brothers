@@ -505,7 +505,7 @@ export default function OrderPage() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4">Commander en ligne</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-700 max-w-2xl mx-auto">
             Commandez vos plats préférés à emporter. Votre commande sera prête à l&apos;heure que vous aurez choisie.
           </p>
         </div>
@@ -562,7 +562,7 @@ export default function OrderPage() {
                                 <h3 className="text-xl font-playfair font-bold">{item.name}</h3>
                                 <span className="text-navy font-bold">{item.price.toFixed(2)} €</span>
                               </div>
-                              <p className="text-gray-600 mb-4">{item.description}</p>
+                              <p className="text-gray-700 mb-4">{item.description}</p>
                             </div>
                             <Button
                               onClick={() => addToCart(item)}
@@ -603,7 +603,7 @@ export default function OrderPage() {
                                 <h3 className="text-xl font-playfair font-bold">{item.name}</h3>
                                 <span className="text-navy font-bold">{item.price.toFixed(2)} €</span>
                               </div>
-                              <p className="text-gray-600 mb-4">{item.description}</p>
+                              <p className="text-gray-700 mb-4">{item.description}</p>
                             </div>
                             <Button
                               onClick={() => addToCart(item)}
@@ -644,7 +644,7 @@ export default function OrderPage() {
                                 <h3 className="text-xl font-playfair font-bold">{item.name}</h3>
                                 <span className="text-navy font-bold">{item.price.toFixed(2)} €</span>
                               </div>
-                              <p className="text-gray-600 mb-4">{item.description}</p>
+                              <p className="text-gray-700 mb-4">{item.description}</p>
                             </div>
                             <Button
                               onClick={() => addToCart(item)}
@@ -685,7 +685,7 @@ export default function OrderPage() {
                                 <h3 className="text-xl font-playfair font-bold">{item.name}</h3>
                                 <span className="text-navy font-bold">{item.price.toFixed(2)} €</span>
                               </div>
-                              <p className="text-gray-600 mb-4">{item.description}</p>
+                              <p className="text-gray-700 mb-4">{item.description}</p>
                             </div>
                             <Button
                               onClick={() => addToCart(item)}
@@ -726,7 +726,7 @@ export default function OrderPage() {
                                 <h3 className="text-xl font-playfair font-bold">{item.name}</h3>
                                 <span className="text-navy font-bold">{item.price.toFixed(2)} €</span>
                               </div>
-                              <p className="text-gray-600 mb-4">{item.description}</p>
+                              <p className="text-gray-700 mb-4">{item.description}</p>
                             </div>
                             <Button
                               onClick={() => addToCart(item)}
@@ -769,7 +769,7 @@ export default function OrderPage() {
                                 <h3 className="text-xl font-playfair font-bold">{item.name}</h3>
                                 <span className="text-navy font-bold">{item.price.toFixed(2)} €</span>
                               </div>
-                              <p className="text-gray-600 mb-4">{item.description}</p>
+                              <p className="text-gray-700 mb-4">{item.description}</p>
                             </div>
                             <Button
                               onClick={() => addToCart(item)}
@@ -810,7 +810,7 @@ export default function OrderPage() {
                                 <h3 className="text-xl font-playfair font-bold">{item.name}</h3>
                                 <span className="text-navy font-bold">{item.price.toFixed(2)} €</span>
                               </div>
-                              <p className="text-gray-600 mb-4">{item.description}</p>
+                              <p className="text-gray-700 mb-4">{item.description}</p>
                             </div>
                             <Button
                               onClick={() => addToCart(item)}
@@ -855,7 +855,7 @@ export default function OrderPage() {
                                 <h3 className="text-xl font-playfair font-bold">{item.name}</h3>
                                 <span className="text-navy font-bold">{item.price.toFixed(2)} €</span>
                               </div>
-                              <p className="text-gray-600 mb-4">{item.description}</p>
+                              <p className="text-gray-700 mb-4">{item.description}</p>
                             </div>
                             <Button
                               onClick={() => addToCart(item)}

@@ -35,7 +35,7 @@ export default function AboutPage() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4">À propos</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-700 max-w-2xl mx-auto">
             Découvrez l&apos;histoire et les valeurs du Brother's restaurant Gennevilliers.
           </p>
         </div>
@@ -53,13 +53,13 @@ export default function AboutPage() {
               <motion.div variants={fadeIn} className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                   <h2 className="text-3xl font-playfair font-bold mb-6">Notre histoire</h2>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-700 mb-4">
                     Brother’s Restaurant Gennevilliers est né de l’amour commun d’un couple pour la gastronomie et l’art
                     de recevoir. Situé au cœur de Gennevilliers, notre établissement a ouvert ses portes en 2023 avec
                     l’ambition de créer un lieu convivial où se mêlent cuisine traditionnelle de qualité et atmosphère
                     chaleureuse.
                   </p>
-                  <p className="text-gray-600">
+                  <p className="text-gray-700">
                     Depuis son ouverture, Brother’s Restaurant a su séduire une clientèle variée, des habitants du
                     quartier aux professionnels en quête d’une pause gourmande. Notre secret ? Des produits frais, des
                     recettes authentiques et un service attentionné qui font de chaque visite un véritable moment de
@@ -108,7 +108,7 @@ export default function AboutPage() {
                     </svg>
                   </div>
                   <h3 className="text-xl font-semibold mb-2 text-center">Qualité</h3>
-                  <p className="text-gray-600 text-center">
+                  <p className="text-gray-700 text-center">
                     Nous nous engageons à utiliser des ingrédients frais et de première qualité pour vous offrir une
                     expérience gustative exceptionnelle.
                   </p>
@@ -132,7 +132,7 @@ export default function AboutPage() {
                     </svg>
                   </div>
                   <h3 className="text-xl font-semibold mb-2 text-center">Tradition</h3>
-                  <p className="text-gray-600 text-center">
+                  <p className="text-gray-700 text-center">
                     Nous perpétuons les recettes traditionnelles françaises tout en y ajoutant une touche de créativité
                     et de modernité.
                   </p>
@@ -156,7 +156,7 @@ export default function AboutPage() {
                     </svg>
                   </div>
                   <h3 className="text-xl font-semibold mb-2 text-center">Convivialité</h3>
-                  <p className="text-gray-600 text-center">
+                  <p className="text-gray-700 text-center">
                     Nous mettons tout en œuvre pour vous offrir un accueil chaleureux et un service personnalisé, afin
                     que vous vous sentiez comme chez vous.
                   </p>
