@@ -1443,12 +1443,18 @@ export default function MenuPage() {
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   }
 
-  const getTranslatedItem = (category: string, itemId: string) => {
-    const translations = menuItemTranslations[category as keyof typeof menuItemTranslations]
-    if (translations && translations[itemId as keyof typeof translations]) {
-      return translations[itemId as keyof typeof translations][language]
-    }
-    return null
+  const getTranslatedItem = (
+    category: string,
+    itemId: string,
+  ): { name: string; description: string } | null => {
+    const categoryTranslations = (menuItemTranslations as Record<
+      string,
+      Record<string, Record<"fr" | "en" | "es", { name: string; description: string }>>
+    >)[category]
+    if (!categoryTranslations) return null
+    const itemTranslations = categoryTranslations[itemId]
+    if (!itemTranslations) return null
+    return itemTranslations[language] ?? null
   }
 
   const renderMenuItem = (item: any, category: string) => {
@@ -1815,7 +1821,7 @@ export default function MenuPage() {
                         <Card className="h-full">
                           <CardContent className="p-6">
                             <h3 className="text-lg md:text-xl font-playfair font-bold mb-2">
-                              {translated ? translated.name : item.name}
+                              {translated?.name ?? item.id}
                             </h3>
                             {translated?.description && (
                               <p className="text-gray-500 text-sm mb-4">{translated.description}</p>
@@ -1914,7 +1920,7 @@ export default function MenuPage() {
                       variants={staggerContainer}
                       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                     >
-                      {menuData.boissons_fraiches.map((item) => (
+                      {menuData.boissons_fraiches.map((item: any) => (
                         <motion.div key={item.id} variants={fadeIn}>
                           <Card className="h-full">
                             <CardContent className="p-6">
@@ -2351,7 +2357,7 @@ export default function MenuPage() {
                           {/* 5. Replace CardContent className and text sizes */}
                           <CardContent className="p-5">
                             <h3 className="text-xl font-playfair font-bold mb-2">
-                              {translated ? translated.name : item.name}
+                              {translated?.name ?? item.id}
                             </h3>
                             {translated?.description && (
                               <p className="text-gray-500 text-base mb-4">{translated.description}</p>
@@ -2452,7 +2458,7 @@ export default function MenuPage() {
                       variants={staggerContainer}
                       className="grid grid-cols-1 gap-5"
                     >
-                      {menuData.boissons_fraiches.map((item) => (
+                      {menuData.boissons_fraiches.map((item: any) => (
                         <motion.div key={item.id} variants={fadeIn}>
                           <Card className="h-full">
                             {/* 5. Replace CardContent className and text sizes */}

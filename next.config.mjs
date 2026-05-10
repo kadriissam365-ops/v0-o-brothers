@@ -3,10 +3,7 @@ const nextConfig = {
   images: {
     formats: ["image/webp", "image/avif"],
   },
-  // TODO Sprint 2/4 : retirer ces flags après refonte page menu et clean-up types
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  // ESLint not configured in this project (v0 generated)
   eslint: {
     ignoreDuringBuilds: true,
   },
