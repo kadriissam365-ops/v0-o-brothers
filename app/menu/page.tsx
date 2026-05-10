@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
-import { Clock, GlassWater, Coffee, Martini, Leaf, Snowflake, Wine, Maximize, X } from "lucide-react"
+import { Clock, GlassWater, Coffee, Martini, Leaf, Snowflake, Wine, Maximize, X, Search } from "lucide-react"
 
 // Menu item translations
 const menuItemTranslations = {
@@ -1363,7 +1363,43 @@ export default function MenuPage() {
   const [activeTab, setActiveTab] = useState("salades")
   const [language, setLanguage] = useState<"fr" | "en" | "es">("fr")
   const menuRef = useRef<HTMLDivElement>(null)
-  const [isMobileFullscreen, setIsMobileFullscreen] = useState(false) // Added state for mobile fullscreen modal
+  const [isMobileFullscreen, setIsMobileFullscreen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [searchMatches, setSearchMatches] = useState<Array<{ category: string; name: string; price: string }>>([])
+  const tabsListRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSearchMatches([])
+      return
+    }
+    const q = searchQuery.toLowerCase().trim()
+    const matches: Array<{ category: string; name: string; price: string }> = []
+    Object.entries(menuData).forEach(([cat, items]) => {
+      ;(items as any[]).forEach((item) => {
+        const translated = (menuItemTranslations as any)[cat]?.[item.id]?.[language]
+        const name = translated?.name ?? (typeof item.name === "object" ? item.name?.[language] : item.name) ?? ""
+        const desc =
+          translated?.description ?? (typeof item.description === "object" ? item.description?.[language] : item.description) ?? ""
+        if (
+          (typeof name === "string" && name.toLowerCase().includes(q)) ||
+          (typeof desc === "string" && desc.toLowerCase().includes(q))
+        ) {
+          matches.push({ category: cat, name: typeof name === "string" ? name : String(name), price: item.price ?? "" })
+        }
+      })
+    })
+    setSearchMatches(matches.slice(0, 12))
+  }, [searchQuery, language])
+
+  const goToCategory = (cat: string) => {
+    setActiveTab(cat)
+    setSearchQuery("")
+    if (typeof window !== "undefined") {
+      window.history.pushState(null, "", `#${cat}`)
+      window.scrollTo({ top: tabsListRef.current?.offsetTop ? tabsListRef.current.offsetTop - 80 : 0, behavior: "smooth" })
+    }
+  }
 
   useEffect(() => {
     setIsLoaded(true)
@@ -1546,8 +1582,60 @@ export default function MenuPage() {
               }}
               className="w-full"
             >
-              {/* Updated div for tabs */}
-              <div className="mb-10 overflow-x-auto p-6 md:p-8 rounded-xl bg-gradient-to-br from-gray-50 to-white shadow-md scrollbar-hide">
+              {/* Search bar */}
+              <div className="max-w-xl mx-auto mb-6 relative">
+                <label htmlFor="menu-search" className="sr-only">Rechercher un plat ou une boisson</label>
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" aria-hidden="true" />
+                  <input
+                    id="menu-search"
+                    type="search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder={
+                      language === "fr"
+                        ? "Rechercher un plat, une boisson…"
+                        : language === "en"
+                          ? "Search for a dish, a drink…"
+                          : "Buscar un plato, una bebida…"
+                    }
+                    className="w-full pl-9 pr-4 py-2.5 rounded-lg border border-gray-300 bg-white shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy"
+                  />
+                </div>
+                {searchQuery && searchMatches.length > 0 && (
+                  <ul
+                    role="listbox"
+                    aria-label="Résultats de recherche"
+                    className="absolute z-30 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-72 overflow-y-auto"
+                  >
+                    {searchMatches.map((m, idx) => (
+                      <li key={`${m.category}-${idx}`}>
+                        <button
+                          onClick={() => goToCategory(m.category)}
+                          className="w-full flex justify-between items-center gap-3 px-4 py-2.5 text-left hover:bg-gray-50 focus:bg-gray-100 focus:outline-none border-b last:border-b-0"
+                        >
+                          <span>
+                            <span className="font-medium block">{m.name}</span>
+                            <span className="text-xs text-gray-500 uppercase">{(tabTranslations[language] as any)[m.category] ?? m.category}</span>
+                          </span>
+                          <span className="text-navy font-bold whitespace-nowrap">{m.price}</span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {searchQuery && searchMatches.length === 0 && (
+                  <p className="absolute z-30 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg p-4 text-sm text-gray-500 shadow-lg">
+                    {language === "fr" ? "Aucun résultat" : language === "en" ? "No results" : "Sin resultados"}
+                  </p>
+                )}
+              </div>
+
+              {/* Sticky TabsList wrapper */}
+              <div
+                ref={tabsListRef}
+                className="sticky top-16 md:top-20 z-20 mb-10 overflow-x-auto p-3 md:p-4 -mx-4 md:mx-0 md:rounded-xl bg-white/95 backdrop-blur-sm shadow-md scrollbar-hide"
+              >
                 <style jsx>{`
                   .scrollbar-hide {
                     -ms-overflow-style: none;
