@@ -8,7 +8,6 @@ export type TrackEvent =
   | "click_itinerary"
   | "click_instagram"
   | "click_menu"
-  | "click_order"
   | "click_review"
 
 export function track(event: TrackEvent, props?: Record<string, string | number | boolean>) {

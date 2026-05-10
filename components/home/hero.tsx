@@ -41,16 +41,6 @@ export default function Hero() {
 
           <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
             <Button size="lg" className="bg-white text-navy hover:bg-white/90 font-semibold" asChild>
-              <Link href="/commander" onClick={() => track("click_order", { source: "hero" })}>
-                Commander en ligne
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent text-white border-white hover:bg-white/10"
-              asChild
-            >
               <Link href="/menu" onClick={() => track("click_menu", { source: "hero" })}>
                 Découvrir notre carte
               </Link>
