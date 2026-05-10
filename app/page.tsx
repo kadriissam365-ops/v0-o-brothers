@@ -1,7 +1,15 @@
+import dynamic from "next/dynamic"
 import Hero from "@/components/home/hero"
-import InfoCards from "@/components/home/info-cards"
-import FeaturedMenu from "@/components/home/featured-menu"
-import ReviewCTA from "@/components/home/review-cta"
+
+const InfoCards = dynamic(() => import("@/components/home/info-cards"), {
+  loading: () => <div className="py-16 bg-cream" aria-hidden />,
+})
+const FeaturedMenu = dynamic(() => import("@/components/home/featured-menu"), {
+  loading: () => <div className="py-16" aria-hidden />,
+})
+const ReviewCTA = dynamic(() => import("@/components/home/review-cta"), {
+  loading: () => <div className="py-16 bg-navy" aria-hidden />,
+})
 
 export default function Home() {
   return (

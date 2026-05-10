@@ -7,10 +7,10 @@ import type { ComponentType } from "react"
 const HTMLFlipBook = HTMLFlipBookRaw as unknown as ComponentType<Record<string, unknown>>
 
 const menuImages = [
-  "/menu-livre/page-1.jpeg",
-  "/menu-livre/page-2.jpeg",
-  "/menu-livre/page-4.jpeg",
-  "/menu-livre/page-3.jpeg",
+  "/menu-livre/page-1.webp",
+  "/menu-livre/page-2.webp",
+  "/menu-livre/page-4.webp",
+  "/menu-livre/page-3.webp",
 ]
 
 export default function MenuLivrePage() {

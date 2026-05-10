@@ -68,7 +68,7 @@ export default function AboutPage() {
                 </div>
                 <div className="relative h-[400px] rounded-lg overflow-hidden">
                   <Image
-                    src="/restaurant-exterior.jpg"
+                    src="/restaurant-exterior.webp"
                     alt="L'extérieur du restaurant Brother's restaurant Gennevilliers avec sa terrasse"
                     fill
                     className="object-cover"
