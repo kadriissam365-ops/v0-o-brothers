@@ -1,7 +1,10 @@
+"use client"
+
 import Link from "next/link"
-import { Instagram } from "lucide-react"
+import { Instagram, MessageCircle } from "lucide-react"
 import Image from "next/image"
 import { RESTAURANT } from "@/lib/constants"
+import { track } from "@/lib/track"
 
 export default function Footer() {
   return (
@@ -18,12 +21,26 @@ export default function Footer() {
               <br />
               {RESTAURANT.address.city}
             </p>
-            <p className="text-gray-300">
+            <p className="text-gray-300 mb-2">
               <span className="font-semibold">Téléphone :</span>{" "}
-              <a href={`tel:${RESTAURANT.phone.tel}`} className="hover:text-white transition-colors">
+              <a
+                href={`tel:${RESTAURANT.phone.tel}`}
+                onClick={() => track("click_call", { source: "footer" })}
+                className="hover:text-white transition-colors"
+              >
                 {RESTAURANT.phone.display}
               </a>
             </p>
+            <a
+              href={RESTAURANT.whatsapp.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => track("click_whatsapp", { source: "footer" })}
+              className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+              <span className="text-sm">Discuter sur WhatsApp</span>
+            </a>
           </div>
 
           <div>
@@ -51,6 +68,7 @@ export default function Footer() {
                   href={ig.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => track("click_instagram", { source: "footer", handle: ig.handle })}
                   className="text-white hover:text-cream transition-colors"
                   aria-label={`Instagram ${ig.handle}`}
                 >

@@ -1,7 +1,10 @@
 "use client"
 
-import HTMLFlipBook from "react-pageflip"
+import HTMLFlipBookRaw from "react-pageflip"
 import Image from "next/image"
+import type { ComponentType } from "react"
+
+const HTMLFlipBook = HTMLFlipBookRaw as unknown as ComponentType<Record<string, unknown>>
 
 const menuImages = [
   "/menu-livre/page-1.jpeg",
