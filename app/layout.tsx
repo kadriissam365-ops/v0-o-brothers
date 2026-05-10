@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -37,13 +37,37 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
+  alternates: {
+    canonical: "/",
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
 }
+
+export const viewport: Viewport = {
+  themeColor: "#1c3450",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+}
+
+const SITE_URL = "https://www.brothers-restaurant-gennevilliers.com"
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
+  "@id": `${SITE_URL}#restaurant`,
   name: "Brother's Restaurant Gennevilliers",
-  url: "https://www.brothers-restaurant-gennevilliers.com",
+  alternateName: "O'Brothers Gennevilliers",
+  url: SITE_URL,
   telephone: "+33147902572",
   email: "contact@brothers-restaurant-gennevilliers.com",
   address: {
@@ -51,6 +75,7 @@ const jsonLd = {
     streetAddress: "148 avenue Gabriel Péri",
     addressLocality: "Gennevilliers",
     postalCode: "92230",
+    addressRegion: "Île-de-France",
     addressCountry: "FR",
   },
   geo: {
@@ -58,6 +83,7 @@ const jsonLd = {
     latitude: 48.9219,
     longitude: 2.2997,
   },
+  hasMap: "https://maps.app.goo.gl/bFex6r3",
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -72,9 +98,27 @@ const jsonLd = {
       closes: "20:00",
     },
   ],
-  servesCuisine: ["Française", "Pizza", "Burger"],
+  servesCuisine: ["Française", "Pizza", "Burger", "Salade", "Cuisine traditionnelle"],
   priceRange: "€€",
-  image: "https://www.brothers-restaurant-gennevilliers.com/terrasse1.webp",
+  paymentAccepted: ["Cash", "Credit Card", "Visa", "Mastercard", "American Express"],
+  currenciesAccepted: "EUR",
+  acceptsReservations: "True",
+  smokingAllowed: false,
+  hasMenu: `${SITE_URL}/menu`,
+  potentialAction: {
+    "@type": "ReserveAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/contact`,
+      inLanguage: "fr-FR",
+      actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
+    },
+    result: {
+      "@type": "Reservation",
+      name: "Réservation au Brother's Restaurant",
+    },
+  },
+  image: [`${SITE_URL}/terrasse1.webp`, `${SITE_URL}/restaurant-exterior.webp`],
   sameAs: [
     "https://www.instagram.com/brothersgenneviliers",
     "https://www.instagram.com/brothers92230",

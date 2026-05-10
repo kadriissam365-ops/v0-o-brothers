@@ -17,6 +17,7 @@ const navLinks = [
   { name: "À propos", href: "/a-propos" },
   { name: "Menu", href: "/menu" },
   { name: "Galerie", href: "/galerie" },
+  { name: "Avis", href: "/avis" },
   { name: "Contact", href: "/contact" },
 ]
 

@@ -103,7 +103,10 @@ export default function Footer() {
               </a>
             </p>
           </div>
-          <div className="flex space-x-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/avis" className="text-gray-400 text-sm hover:text-white transition-colors">
+              Avis clients
+            </Link>
             <Link href="/mentions-legales" className="text-gray-400 text-sm hover:text-white transition-colors">
               Mentions légales
             </Link>
