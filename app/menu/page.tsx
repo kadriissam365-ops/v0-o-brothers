@@ -1640,9 +1640,36 @@ export default function MenuPage() {
               {/* Sticky TabsList wrapper */}
               <div
                 ref={tabsListRef}
-                className="sticky top-16 md:top-20 z-20 mb-10 overflow-x-auto p-3 md:p-4 -mx-4 md:mx-0 md:rounded-xl bg-white/95 backdrop-blur-sm shadow-md scrollbar-hide"
+                className="sticky top-16 md:top-20 z-20 mb-10 -mx-4 md:mx-0 md:rounded-2xl bg-white/95 backdrop-blur-sm shadow-md tabs-fade"
               >
                 <style jsx>{`
+                  .tabs-fade {
+                    position: sticky;
+                  }
+                  .tabs-fade::before,
+                  .tabs-fade::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    width: 24px;
+                    pointer-events: none;
+                    z-index: 2;
+                  }
+                  .tabs-fade::before {
+                    left: 0;
+                    background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+                  }
+                  .tabs-fade::after {
+                    right: 0;
+                    background: linear-gradient(to left, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+                  }
+                  @media (min-width: 768px) {
+                    .tabs-fade::before,
+                    .tabs-fade::after {
+                      display: none;
+                    }
+                  }
                   .scrollbar-hide {
                     -ms-overflow-style: none;
                     scrollbar-width: none;
@@ -1651,127 +1678,129 @@ export default function MenuPage() {
                     display: none;
                   }
                 `}</style>
-                <TabsList className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-x-3 md:gap-y-2 min-w-max md:min-w-0">
+                <div className="overflow-x-auto p-4 md:p-5 scrollbar-hide">
+                  <TabsList className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-3 md:gap-x-4 md:gap-y-2 min-w-max md:min-w-0 h-auto bg-transparent">
                   <TabsTrigger
                     value="salades"
                     id="salades"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].salades}
                   </TabsTrigger>
                   <TabsTrigger
                     value="plats"
                     id="plats"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].plats}
                   </TabsTrigger>
                   <TabsTrigger
                     value="pizzas"
                     id="pizzas"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].pizzas}
                   </TabsTrigger>
                   <TabsTrigger
                     value="planches"
                     id="planches"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].planches}
                   </TabsTrigger>
                   <TabsTrigger
                     value="desserts"
                     id="desserts"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].desserts}
                   </TabsTrigger>
                   <TabsTrigger
                     value="coupes"
                     id="coupes"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].coupes}
                   </TabsTrigger>
                   <TabsTrigger
                     value="glaces"
                     id="glaces"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].glaces}
                   </TabsTrigger>
                   <TabsTrigger
                     value="cocktails"
                     id="cocktails"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     <Martini className="w-4 h-4 mr-2" /> {tabTranslations[language].cocktails}
                   </TabsTrigger>
                   <TabsTrigger
                     value="mocktails"
                     id="mocktails"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     <Leaf className="w-4 h-4 mr-2" /> {tabTranslations[language].mocktails}
                   </TabsTrigger>
                   <TabsTrigger
                     value="boissons_fraiches"
                     id="boissons_fraiches"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     <GlassWater className="w-4 h-4 mr-2" /> {tabTranslations[language].boissons_fraiches}
                   </TabsTrigger>
                   <TabsTrigger
                     value="boissons_chaudes"
                     id="boissons_chaudes"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     <Coffee className="w-4 h-4 mr-2" /> {tabTranslations[language].boissons_chaudes}
                   </TabsTrigger>
                   <TabsTrigger
                     value="frappes"
                     id="frappes"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     <Snowflake className="w-4 h-4 mr-2" /> {tabTranslations[language].frappes}
                   </TabsTrigger>
                   <TabsTrigger
                     value="vins"
                     id="vins"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     <Wine className="w-4 h-4 mr-2" /> {tabTranslations[language].vins}
                   </TabsTrigger>
                   <TabsTrigger
                     value="champagnes"
                     id="champagnes"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].champagnes}
                   </TabsTrigger>
                   <TabsTrigger
                     value="bieres_pressions"
                     id="bieres_pressions"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].bieres_pressions}
                   </TabsTrigger>
                   <TabsTrigger
                     value="bieres_bouteilles"
                     id="bieres_bouteilles"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].bieres_bouteilles}
                   </TabsTrigger>
                   <TabsTrigger
                     value="aperitifs"
                     id="aperitifs"
-                    className="whitespace-nowrap rounded-lg px-4 py-3 md:px-6 md:py-3.5 text-sm md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
+                    className="whitespace-nowrap rounded-xl px-6 py-4 md:px-7 md:py-4 text-base md:text-base font-semibold hover:bg-red-50 hover:text-red-700 hover:shadow-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out"
                   >
                     {tabTranslations[language].aperitifs}
                   </TabsTrigger>
-                </TabsList>
+                  </TabsList>
+                </div>
               </div>
 
               <TabsContent value="salades">
