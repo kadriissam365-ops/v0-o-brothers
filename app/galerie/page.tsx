@@ -5,117 +5,48 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-// Gallery data
+// Gallery data — photos issues du compte Instagram @brothersgenneviliers
 const galleryData = {
   plats: [
-    {
-      id: "plat-1",
-      title: "Salade César",
-      description: "Notre salade César avec filet de poulet grillé",
-      image: "/images/gallery/plats/salade-cesar.webp",
-    },
-    {
-      id: "plat-2",
-      title: "Entrecôte grillée",
-      description: "Entrecôte grillée au sel de Guérande et piment d'Espelette",
-      image: "/images/plats/entrecote.webp",
-    },
-    {
-      id: "plat-3",
-      title: "Burger BROTHER'S",
-      description: "Notre burger signature avec frites maison",
-      image: "/images/plats/burger-brothers.webp",
-    },
-    {
-      id: "plat-4",
-      title: "Tartare de bœuf",
-      description: "Tartare de bœuf préparé à la minute",
-      image: "/images/plats/tartare-boeuf.webp",
-    },
-    {
-      id: "plat-5",
-      title: "Pavé de saumon",
-      description: "Pavé de saumon à la plancha, linguine au pesto",
-      image: "/images/gallery/plats/pave-saumon.webp",
-    },
-    {
-      id: "plat-6",
-      title: "Bowl saumon",
-      description: "Bowl healthy au saumon mariné et légumes frais",
-      image: "/images/gallery/plats/bowl-saumon.webp",
-    },
+    { id: "plat-cote-de-boeuf", title: "Côte de bœuf", description: "Côte de bœuf grillée, sauce aux champignons et pommes de terre grenailles", image: "/images/insta/plats/cote-de-boeuf.webp" },
+    { id: "plat-boeuf-bourguignon", title: "Bœuf bourguignon", description: "Bœuf mijoté longuement au vin rouge, carottes et pommes de terre", image: "/images/insta/plats/boeuf-bourguignon.webp" },
+    { id: "plat-gambas-risotto", title: "Gambas et risotto", description: "Risotto crémeux aux gambas grillées et fines herbes", image: "/images/insta/plats/gambas-risotto.webp" },
+    { id: "plat-poulet-basquaise", title: "Poulet basquaise", description: "Cuisses de poulet rôties aux poivrons, oignons et penne", image: "/images/insta/plats/poulet-basquaise.webp" },
+    { id: "plat-brochettes-tandoori", title: "Brochettes de poulet tandoori", description: "Brochettes marinées tandoori, frites maison et salade", image: "/images/insta/plats/brochettes-tandoori.webp" },
+    { id: "plat-poulet-farci-cepes", title: "Poulet farci aux cèpes", description: "Suprême de poulet farci sauce aux cèpes, riz pilaf", image: "/images/insta/plats/poulet-farci-cepes.webp" },
+    { id: "plat-burger-saumon-duo", title: "Burger et saumon", description: "Notre burger maison et pavé de saumon à la plancha", image: "/images/insta/plats/burger-saumon-duo.webp" },
+    { id: "plat-salade-italienne", title: "Salade italienne", description: "Mozzarella, jambon de Parme, melon, pesto et roquette", image: "/images/insta/plats/salade-italienne.webp" },
+    { id: "plat-bowl-avocat", title: "Bowl healthy", description: "Bowl d'avocat, edamame, tomates cerises et riz complet", image: "/images/insta/plats/bowl-avocat.webp" },
+    { id: "plat-raviolis-fromages", title: "Raviolis 4 fromages", description: "Raviolis crémeux aux 4 fromages et tomates séchées", image: "/images/insta/plats/raviolis-fromages.webp" },
+    { id: "plat-pennes-pesto", title: "Pennes au pesto", description: "Pennes maison sauce pesto, tomates confites et parmesan", image: "/images/insta/plats/pennes-pesto.webp" },
   ],
   pizzas: [
-    {
-      id: "pizza-1",
-      title: "Pizza Margarita",
-      description: "La classique avec sauce tomate et mozzarella",
-      image: "/images/gallery/pizzas/margarita.webp",
-    },
-    {
-      id: "pizza-2",
-      title: "Pizza Régina",
-      description: "Sauce tomate, mozzarella, champignons, jambon blanc",
-      image: "/images/gallery/pizzas/regina.webp",
-    },
-    {
-      id: "pizza-4",
-      title: "Pizza Norvégienne",
-      description: "Crème fraîche, mozzarella, saumon fumé",
-      image: "/images/gallery/pizzas/norvegienne.webp",
-    },
+    { id: "pizza-burrata-roquette", title: "Pizza burrata et roquette", description: "Burrata crémeuse, roquette fraîche, tomates cerises et parmesan", image: "/images/insta/pizzas/burrata-roquette.webp" },
+    { id: "pizza-regina", title: "Pizza Regina", description: "Sauce tomate, mozzarella, jambon blanc et champignons frais", image: "/images/insta/pizzas/regina.webp" },
+    { id: "pizza-regine", title: "Pizza Régine", description: "Notre Régine généreusement garnie", image: "/images/insta/pizzas/regine.webp" },
+    { id: "pizza-chevre", title: "Pizza chèvre", description: "Sauce tomate, mozzarella, médaillons de chèvre fondants", image: "/images/insta/pizzas/chevre.webp" },
+    { id: "pizza-du-chez", title: "Pizza du Chef", description: "Bœuf haché, olives, oignons, la signature du chef", image: "/images/insta/pizzas/du-chez.webp" },
   ],
   desserts: [
-    {
-      id: "dessert-1",
-      title: "Tiramisu maison",
-      description: "Notre tiramisu fait maison",
-      image: "/images/gallery/desserts/tiramisu.webp",
-    },
-    {
-      id: "dessert-2",
-      title: "Crème brûlée",
-      description: "Crème brûlée traditionnelle",
-      image: "/images/gallery/desserts/creme-brulee.webp",
-    },
-    {
-      id: "dessert-3",
-      title: "Mœlleux au chocolat",
-      description: "Servi avec sa boule de glace vanille",
-      image: "/images/gallery/desserts/moelleux-chocolat.webp",
-    },
-    {
-      id: "dessert-4",
-      title: "Café gourmand",
-      description: "Café accompagné de ses mignardises du moment",
-      image: "/images/gallery/desserts/cafe-gourmand.webp",
-    },
+    { id: "dessert-charlotte-fraises", title: "Charlotte aux fraises", description: "Charlotte à la fraise, mousse vanille et boudoirs maison", image: "/images/insta/desserts/charlotte-fraises.webp" },
+    { id: "dessert-tarte-figue", title: "Tarte à la figue fraîche", description: "Tarte aux figues fraîches sur sablé Breton", image: "/images/insta/desserts/tarte-figue.webp" },
+    { id: "dessert-tarte-fraise", title: "Tarte à la fraise", description: "Pâte sablée, crème pâtissière vanille et fraises fraîches", image: "/images/insta/desserts/tarte-fraise.webp" },
+    { id: "dessert-tarte-citron-meringuee", title: "Tarte au citron meringuée", description: "Crème au citron acidulée, meringue italienne dorée", image: "/images/insta/desserts/tarte-citron-meringuee.webp" },
+    { id: "dessert-tarte-abricot", title: "Tarte aux abricots", description: "Tarte aux abricots et amandes effilées", image: "/images/insta/desserts/tarte-abricot.webp" },
+    { id: "dessert-charlotte-chocolat", title: "Charlotte au chocolat", description: "Charlotte au chocolat noir, ganache et boudoirs", image: "/images/insta/desserts/charlotte-chocolat.webp" },
+    { id: "dessert-bavarois-fraises", title: "Bavarois aux fraises", description: "Bavarois fraises sur biscuit sablé, miroir fruits rouges", image: "/images/insta/desserts/bavarois-fraises.webp" },
+    { id: "dessert-millefeuille", title: "Millefeuille maison", description: "Millefeuille à la vanille, pâte feuilletée et glaçage", image: "/images/insta/desserts/millefeuille.webp" },
+    { id: "dessert-cheesecake-newyork", title: "Cheesecake new-yorkais", description: "Cheesecake à l'américaine, biscuit speculoos", image: "/images/insta/desserts/cheesecake-new-yorkais.webp" },
+    { id: "dessert-cheesecake-maison", title: "Cheesecake maison", description: "Cheesecake aérien, croûte de biscuits émiettés", image: "/images/insta/desserts/cheesecake-maison.webp" },
+    { id: "dessert-gateau-poire-chocolat", title: "Gâteau poire et chocolat", description: "Gâteau moelleux, poires fondantes et ganache au chocolat", image: "/images/insta/desserts/gateau-poire-chocolat.webp" },
   ],
   restaurant: [
-    {
-      id: "resto-1",
-      title: "Notre salle",
-      description: "L'intérieur chaleureux du O'Brothers avec son plafond étoilé",
-      image: "/images/notre-salle-restaurant.webp",
-    },
-    {
-      id: "resto-2",
-      title: "Le bar",
-      description: "Notre bar élégant où sont préparés vos cocktails",
-      image: "/images/le-bar-restaurant.webp",
-    },
-    {
-      id: "resto-3",
-      title: "La terrasse",
-      description: "Notre terrasse ensoleillée avec ses chaises en rotin",
-      image: "/images/la-terrasse-restaurant.webp",
-    },
-    {
-      id: "resto-4",
-      title: "Espace lounge",
-      description: "Notre espace lounge avec ses séparations en bois pour un moment de détente",
-      image: "/images/espace-lounge-restaurant.webp",
-    },
+    { id: "resto-interieur-tables", title: "Notre salle", description: "L'intérieur chaleureux du Brother's avec ses tables et claustras bois", image: "/images/insta/restaurant/interieur-tables.webp" },
+    { id: "resto-bar-consommations", title: "Le bar", description: "Notre bar avec sa sélection de spiritueux et son tableau de consommations", image: "/images/insta/restaurant/bar-consommations.webp" },
+    { id: "resto-terrasse-rotin", title: "La terrasse", description: "Notre terrasse extérieure avec chaises rotin et guirlande lumineuse", image: "/images/insta/restaurant/terrasse-rotin.webp" },
+    { id: "resto-salle-table", title: "Tables dressées", description: "Tables prêtes à accueillir nos clients dans une ambiance soignée", image: "/images/insta/restaurant/salle-table.webp" },
+    { id: "resto-cocktail-bar", title: "Cocktail signature", description: "Cocktail tropical maison servi au bar en marbre vert", image: "/images/insta/restaurant/cocktail-bar.webp" },
+    { id: "resto-equipe-lions-club", title: "Notre équipe", description: "L'équipe du Brother's lors d'un événement Lions Club", image: "/images/insta/restaurant/equipe-lions-club.webp" },
   ],
 }
 
