@@ -94,12 +94,12 @@ export default function Footer() {
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
               Site créé par{" "}
               <a
-                href="https://www.kadriwebai.com/"
+                href="https://kadriai.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
               >
-                KADRI Web AI
+                KADRI AI
               </a>
             </p>
           </div>
