@@ -20,10 +20,6 @@ export const RESTAURANT = {
       handle: "@brothersgenneviliers",
       url: "https://www.instagram.com/brothersgenneviliers",
     },
-    {
-      handle: "brothers92230",
-      url: "https://www.instagram.com/brothers92230",
-    },
   ],
   hours: {
     opening: {

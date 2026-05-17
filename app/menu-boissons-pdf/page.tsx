@@ -280,7 +280,7 @@ export default function MenuBoissonsPDF() {
               <p className="text-sm print:text-xs">Brother's restaurant Gennevilliers</p>
               <p className="text-sm print:text-xs">148 avenue Gabriel Péri - 92230 Gennevilliers</p>
               <p className="text-sm print:text-xs">☎ 01 47 90 25 72</p>
-              <p className="text-sm print:text-xs">@brothersgenneviliers • brothers92230</p>
+              <p className="text-sm print:text-xs">@brothersgenneviliers</p>
             </div>
             <div>
               <h3 className="font-bold text-navy mb-2">Horaires</h3>

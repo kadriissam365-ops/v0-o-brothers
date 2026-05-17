@@ -120,7 +120,6 @@ const jsonLd = {
   image: [`${SITE_URL}/terrasse1.webp`, `${SITE_URL}/restaurant-exterior.webp`],
   sameAs: [
     "https://www.instagram.com/brothersgenneviliers",
-    "https://www.instagram.com/brothers92230",
   ],
 }
 
