@@ -19,31 +19,31 @@ type Category = {
 const categories: Category[] = [
   {
     title: "Salades Composées",
-    description: "Nos salades fraîches et généreuses, préparées avec des ingrédients de qualité.",
-    image: "/gourmet-caesar-salad.webp",
+    description: "Mozzarella, jambon de Parme, melon, pesto et roquette : nos salades fraîches et généreuses.",
+    image: "/images/insta/plats/salade-italienne.webp",
     href: "/menu#salades",
-    alt: "Salade César gourmande maison",
+    alt: "Salade italienne mozzarella, jambon de Parme, melon et roquette",
   },
   {
     title: "Plats Traditionnels",
-    description: "Des plats savoureux et généreux, préparés avec passion.",
-    image: "/images/plats-traditionnels.webp",
+    description: "Bœuf bourguignon, côte de bœuf, poulet basquaise : des plats mijotés avec passion.",
+    image: "/images/insta/plats/boeuf-bourguignon.webp",
     href: "/menu#plats",
-    alt: "Plats traditionnels du restaurant",
+    alt: "Bœuf bourguignon mijoté au vin rouge, carottes et pommes de terre",
   },
   {
     title: "Pizzas Maison",
-    description: "Nos pizzas artisanales cuites au feu de bois, avec une pâte maison.",
-    image: "/homemade-italian-pizza.webp",
+    description: "Burrata, Regina, chèvre… nos pizzas artisanales à pâte fine et garnitures généreuses.",
+    image: "/images/insta/pizzas/burrata-roquette.webp",
     href: "/menu#pizzas",
-    alt: "Pizza italienne maison cuite au feu de bois",
+    alt: "Pizza burrata, roquette, tomates cerises et parmesan",
   },
   {
     title: "Desserts",
-    description: "Terminez votre repas en douceur avec nos desserts maison.",
-    image: "/french-chocolate-vanilla-dessert.webp",
+    description: "Tartes aux fruits, charlottes, cheesecakes : nos desserts maison pour finir en douceur.",
+    image: "/images/insta/desserts/tarte-fraise.webp",
     href: "/menu#desserts",
-    alt: "Dessert chocolat-vanille à la française",
+    alt: "Tarte à la fraise sur pâte sablée et crème pâtissière vanille",
   },
 ]
 
