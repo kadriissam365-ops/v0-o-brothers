@@ -29,13 +29,6 @@ export const metadata: Metadata = {
       "Cuisine traditionnelle, pizzas maison, salades et desserts au cœur de Gennevilliers. Ouvert du lundi au samedi.",
     images: [{ url: "/terrasse1.webp", width: 1920, height: 1440, alt: "Terrasse du Brother's Restaurant" }],
   },
-  icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon-light-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: "/apple-icon.png",
-  },
   alternates: {
     canonical: "/",
   },
