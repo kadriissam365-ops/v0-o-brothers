@@ -51,6 +51,7 @@ export default function Navbar() {
   }, [isOpen])
 
   return (
+    <>
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
@@ -101,64 +102,65 @@ export default function Navbar() {
         >
           {isOpen ? <X className="h-6 w-6 text-navy" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
         </button>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              id="mobile-nav"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-white/95 backdrop-blur-sm z-40 pt-20 overflow-y-auto"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Menu de navigation"
-            >
-              <button
-                className="absolute top-6 right-4 z-50 p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 rounded-md"
-                onClick={() => setIsOpen(false)}
-                aria-label="Fermer le menu"
-              >
-                <X className="h-6 w-6 text-navy" aria-hidden="true" />
-              </button>
-
-              <nav className="container mx-auto px-4 py-8 flex flex-col space-y-6 bg-white/95 rounded-lg shadow-lg" aria-label="Navigation mobile">
-                <OpeningStatusBanner variant="pill" className="self-start" />
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    aria-current={isActive(link.href) ? "page" : undefined}
-                    className={cn(
-                      "text-lg font-medium transition-colors rounded-md",
-                      isActive(link.href) ? "text-navy underline underline-offset-4" : "text-gray-800 hover:text-navy",
-                    )}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-                <Button asChild className="bg-navy hover:bg-navy-light w-full">
-                  <Link
-                    href={`tel:${RESTAURANT.phone.tel}`}
-                    onClick={() => {
-                      track("click_call", { source: "navbar_mobile" })
-                      setIsOpen(false)
-                    }}
-                    className="flex items-center justify-center gap-2"
-                    aria-label={`Appeler le ${RESTAURANT.phone.display}`}
-                  >
-                    <Phone className="h-5 w-5" aria-hidden="true" />
-                    Appeler {RESTAURANT.phone.display}
-                  </Link>
-                </Button>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </header>
+
+    {/* Mobile Navigation — placed outside <header> to avoid being trapped by the header's backdrop-filter containing block */}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          id="mobile-nav"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+          className="md:hidden fixed inset-0 bg-white z-[60] pt-20 overflow-y-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu de navigation"
+        >
+          <button
+            className="absolute top-6 right-4 z-[70] p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 rounded-md"
+            onClick={() => setIsOpen(false)}
+            aria-label="Fermer le menu"
+          >
+            <X className="h-6 w-6 text-navy" aria-hidden="true" />
+          </button>
+
+          <nav className="container mx-auto px-4 py-8 flex flex-col space-y-6" aria-label="Navigation mobile">
+            <OpeningStatusBanner variant="pill" className="self-start" />
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={cn(
+                  "text-lg font-medium transition-colors rounded-md",
+                  isActive(link.href) ? "text-navy underline underline-offset-4" : "text-gray-800 hover:text-navy",
+                )}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <Button asChild className="bg-navy hover:bg-navy-light w-full">
+              <Link
+                href={`tel:${RESTAURANT.phone.tel}`}
+                onClick={() => {
+                  track("click_call", { source: "navbar_mobile" })
+                  setIsOpen(false)
+                }}
+                className="flex items-center justify-center gap-2"
+                aria-label={`Appeler le ${RESTAURANT.phone.display}`}
+              >
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                Appeler {RESTAURANT.phone.display}
+              </Link>
+            </Button>
+          </nav>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   )
 }
